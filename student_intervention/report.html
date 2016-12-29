@@ -11803,7 +11803,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries</span>
@@ -11855,14 +11855,15 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[33]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate number of students</span>
 <span class="n">n_students</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
 
 <span class="c1"># TODO: Calculate number of features</span>
-<span class="n">n_features</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="c1">### n_features adjustment for the resubmission</span>
+<span class="n">n_features</span> <span class="o">=</span> <span class="n">student_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
 
 <span class="c1"># TODO: Calculate passing students</span>
 <span class="n">n_passed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">student_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">student_data</span><span class="p">[</span><span class="s1">&#39;passed&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;yes&#39;</span><span class="p">])</span>
@@ -11892,7 +11893,7 @@ div#notebook {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Total number of students: 395
-Number of features: 31
+Number of features: 30
 Number of students who passed: 265
 Number of students who failed: 130
 Graduation rate of the class: 67.09%
@@ -11918,7 +11919,7 @@ Graduation rate of the class: 67.09%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[34]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Extract feature columns</span>
@@ -12000,7 +12001,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">preprocess_features</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
@@ -12071,7 +12072,7 @@ Feature values:
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import any additional functionality you may need here</span>
@@ -12083,6 +12084,7 @@ Feature values:
 <span class="n">num_test</span> <span class="o">=</span> <span class="n">X_all</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">num_train</span>
 
 <span class="c1"># TODO: Shuffle and split the dataset into the number of training and testing points above</span>
+<span class="c1">## Taking the sugestion of the reviwer to use stratify (nice! Thanks!)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_all</span><span class="p">,</span> <span class="n">y_all</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="n">num_train</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 
 <span class="c1"># Show the results of the split</span>
@@ -12206,7 +12208,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">train_classifier</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">):</span>
@@ -12279,7 +12281,7 @@ Testing set has 95 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Import the three supervised learning models from sklearn</span>
@@ -12337,19 +12339,19 @@ Testing set has 95 samples.
 <pre>======================A=======================
 
 Training a LogisticRegression using a training set size of 100. . .
-Trained model in 0.3821 seconds
-Made predictions in 0.2240 seconds.
+Trained model in 0.0029 seconds
+Made predictions in 0.0003 seconds.
 F1 score for training set: 0.8593.
-Made predictions in 0.0007 seconds.
+Made predictions in 0.0003 seconds.
 F1 score for test set: 0.7647.
 Training a LogisticRegression using a training set size of 200. . .
-Trained model in 0.0045 seconds
-Made predictions in 0.0832 seconds.
-F1 score for training set: 0.8562.
+Trained model in 0.0034 seconds
 Made predictions in 0.0004 seconds.
+F1 score for training set: 0.8562.
+Made predictions in 0.0002 seconds.
 F1 score for test set: 0.7914.
 Training a LogisticRegression using a training set size of 300. . .
-Trained model in 0.0058 seconds
+Trained model in 0.0047 seconds
 Made predictions in 0.0004 seconds.
 F1 score for training set: 0.8468.
 Made predictions in 0.0003 seconds.
@@ -12358,43 +12360,43 @@ F1 score for test set: 0.8060.
 ======================B=======================
 
 Training a RandomForestClassifier using a training set size of 100. . .
-Trained model in 0.2354 seconds
-Made predictions in 0.0060 seconds.
+Trained model in 0.1663 seconds
+Made predictions in 0.0050 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0052 seconds.
+Made predictions in 0.0049 seconds.
 F1 score for test set: 0.8000.
 Training a RandomForestClassifier using a training set size of 200. . .
-Trained model in 0.1374 seconds
-Made predictions in 0.0060 seconds.
+Trained model in 0.1503 seconds
+Made predictions in 0.0057 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0050 seconds.
+Made predictions in 0.0047 seconds.
 F1 score for test set: 0.7832.
 Training a RandomForestClassifier using a training set size of 300. . .
-Trained model in 0.1746 seconds
-Made predictions in 0.0072 seconds.
+Trained model in 0.1324 seconds
+Made predictions in 0.0064 seconds.
 F1 score for training set: 1.0000.
-Made predictions in 0.0050 seconds.
+Made predictions in 0.0048 seconds.
 F1 score for test set: 0.7917.
 
 ======================C=======================
 
 Training a SVC using a training set size of 100. . .
-Trained model in 0.0017 seconds
-Made predictions in 0.0012 seconds.
+Trained model in 0.0011 seconds
+Made predictions in 0.0007 seconds.
 F1 score for training set: 0.8777.
-Made predictions in 0.0011 seconds.
+Made predictions in 0.0006 seconds.
 F1 score for test set: 0.7746.
 Training a SVC using a training set size of 200. . .
-Trained model in 0.0044 seconds
-Made predictions in 0.0035 seconds.
+Trained model in 0.0028 seconds
+Made predictions in 0.0021 seconds.
 F1 score for training set: 0.8679.
-Made predictions in 0.0017 seconds.
+Made predictions in 0.0010 seconds.
 F1 score for test set: 0.7815.
 Training a SVC using a training set size of 300. . .
-Trained model in 0.0097 seconds
-Made predictions in 0.0081 seconds.
+Trained model in 0.0060 seconds
+Made predictions in 0.0045 seconds.
 F1 score for training set: 0.8761.
-Made predictions in 0.0027 seconds.
+Made predictions in 0.0016 seconds.
 F1 score for test set: 0.7838.
 </pre>
 </div>
@@ -12575,8 +12577,8 @@ Another important thing is that the gap between the test and the train scores ar
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <p>So, the model I used is able to predict if a student will graduate or not, and if not, the student will need intervention before the worst thing happen. Using attributes of the students in the past we are able to predict the future, it is easy as it seem:</p>
-<p>Imagine that you have a square full of dots, like a face of a dice but with more dots. Now let's suppose that dots represent students and they're in that place based in their actions in the past (the position of the dot represent the past actions of the student), it's ok but we do not know who is each student, or why they're in that position. The LR algorithm will try to draw a line separing the dots in the square, now we have the same dots but they're separate by a line, and using this line we can classify the students for exampe "The left side of the line are the students that will not graduate" is that what the model call "learn", drawn the best line separating the students dots.</p>
-<p>Now, if a new students comes to our hands you can see he past and put his in appropriate side of the line and the level of assurance of our algorithm can be meassured seeing the distance between the new student and the line, if he are closer to the line the algorithm have less assurance of the situation of the student and vice-versa, after, looking what side of the swaure the student get we can say if, in the future, he will need intervation or not, and this is all the magic.</p>
+<p>The LR makes predictions using probability, a number between 0 or 1 that it will be near to 0 if the student will not graduate or near to 1 if everything is ok with the student, the algorithm make it using a training dataset to learn all the weights with the data correctly labeled (what we are doing here is analyzing the past), after it we will have a model made with the training data ready to be used.</p>
+<p>With the model in hands we can give to it another data input, an input that the algorithm never saw before, this is the data that we want to predict, so using what the algorithm learn with the past data, we apply the future data and get a numeric output what represents the probability of the new data being part of some group, so if the probability is bellow 0.5 the student is more likely to not pass, and then go to the group with label 0, and, if the probability is above 0.5 we tell that the student is ok, and can graduate, going to the group wiith label 1.</p>
 
 </div>
 </div>
