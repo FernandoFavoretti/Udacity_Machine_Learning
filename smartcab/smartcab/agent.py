@@ -3,9 +3,10 @@ import math
 from environment import Agent, Environment
 from planner import RoutePlanner
 from simulator import Simulator
+
+###https://docs.python.org/2/library/itertools.html
 import itertools
-import math
-import random
+
 
 class LearningAgent(Agent):
     """ An agent that learns to drive in the Smartcab world.
@@ -34,6 +35,7 @@ class LearningAgent(Agent):
 
         self.template_q = dict((k, 0.0) for k in self.valid_actions)
 
+        #Learned from http://stackoverflow.com/questions/3034014/how-to-apply-itertools-product-to-elements-of-a-list-of-lists
         for state_tuple in itertools.product(*self.state_def):
             self.Q[state_tuple] = self.template_q.copy()
 
@@ -47,11 +49,11 @@ class LearningAgent(Agent):
         # Select the destination as the new location to route to
         self.planner.route_to(destination)
 
+        #keeping it zero for test
         if testing:
             self.epsilon = 0
             self.alpha = 0
         else:
-            # Use negative exponential e^(-at) decay function
             self.epsilon = math.exp(-self.alpha*self.t)
             self.t += 1
 
