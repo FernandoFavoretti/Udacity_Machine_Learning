@@ -13839,7 +13839,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The smartcab does not move at all in the entire simulation, it started in random point and still there while it are receiving rewards, that are positive or negative enforcements in reason of the behavior of the cab. The light changing color affect the rewards based in the cab behavior, for example if it stand in pplace while a green light is showed the cab receive a negative reward, also, if the cab stand in place in a red light it will receive a positive reward</p>
+<p>The smartcab does not move at all in the entire simulation, it started in random point and still there while it are receiving rewards, that are positive or negative enforcements in reason of the behavior of the cab. The light changing color affect the rewards based in the cab behavior, for example:</p>
+<p>1.If it stand in place while a green light is showed the cab receive a negative reward</p>
+<p>2.If it stand in place while a green light is showed  and <strong><em>there exist oncoming traffic </em></strong>, the cab receive a positive reward</p>
+<p>3.if the cab stand in place in a red light it will receive a positive reward.</p>
 
 </div>
 </div>
@@ -13883,7 +13886,7 @@ div#notebook {
 </code></pre>
 <p>In Environment.py</p>
 
-<pre><code>    1. The agent class, that are the base for all the agents, it has the functions for update, reset, init and others functions for the agent
+<pre><code>    1. The envoronment.act member is called at the end of the update function in agent.py. This call is for request a reward based on an action of the agent
 
 </code></pre>
 <p>In Simulator.py</p>
