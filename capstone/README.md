@@ -41,7 +41,7 @@ This project was made for the nanodegree of Machine Learning in udacity
     >>6.    ***MachineLearningNanodegreeCapstoneProject.pdf*** dir
     
     
-> The complete relatory for this capstone
+> The complete report for this capstone
  
  
  > The first step to run it all, is getting the kaggle dataset of the Dogs vs Cats competition:
